@@ -4021,6 +4021,11 @@ sp<ResourceTable::Package> ResourceTable::getPackage(const String16& package)
     if (package != mAssetsPackage) {
         return NULL;
     }
+    
+    int forcedPackageId = mBundle->getForcedPackageId();
+    if (forcedPackageId != -1) {
+        return new Package(package, forcedPackageId);
+    }
     return mPackages.valueFor(package);
 }
 
