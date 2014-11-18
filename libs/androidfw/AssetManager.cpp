@@ -211,6 +211,8 @@ bool AssetManager::addAssetPath(const String8& path, int32_t* cookie)
     ALOGV("In %p Asset %s path: %s", this,
          ap.type == kFileTypeDirectory ? "dir" : "zip", ap.path.string());
 
+    mAssetPaths.add(ap);
+
     // new paths are always added at the end
     if (cookie) {
         *cookie = static_cast<int32_t>(mAssetPaths.size());
